@@ -1,3 +1,16 @@
+/*************************************************************
+ * 
+ * demo_ReadEvent() macro
+ * 
+ * This is a simple demonstration of readint a LArSoft file 
+ * and printing out the run and event numbers. You can also
+ * put the event numbers into a histogram!
+ *
+ * Wesley Ketchum (wketchum@fnal.gov), Aug28, 2016
+ * 
+ *************************************************************/
+
+
 //some standard C++ includes
 #include <iostream>
 #include <stdlib.h>
