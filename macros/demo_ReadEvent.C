@@ -2,7 +2,7 @@
  * 
  * demo_ReadEvent() macro
  * 
- * This is a simple demonstration of readint a LArSoft file 
+ * This is a simple demonstration of reading a LArSoft file 
  * and printing out the run and event numbers. You can also
  * put the event numbers into a histogram!
  *
@@ -46,9 +46,6 @@ void demo_ReadEvent() {
   //We specify our files in a list of file names!
   //Note: multiple files allowed. Just separate by comma.
   vector<string> filenames { "MyInputFile_1.root" };
-
-  //I like having a timer ... that's just me.
-  TStopwatch timer;
 
   //ok, now for the event loop! Here's how it works.
   //
