@@ -1,0 +1,25 @@
+FERMIAPP_UBOONE_DIR="/grid/fermiapp/products/uboone/"
+FERMIOSG_UBOONE_DIR="/cvmfs/uboone.opensciencegrid.org/products/"
+OASIS_UBOONE_DIR="/cvmfs/oasis.opensciencegrid.org/microboone/products/"
+
+LOCAL_UBOONE_DIR="/Users/wketchum/larsoft_products"
+
+for dir in $FERMIAPP_UBOONE_DIR $FERMIOSG_UBOONE_DIR $OASIS_UBOONE_DIR $LOCAL_UBOONE_DIR;
+do
+  if [[ -f $dir/setup ]]; then
+    echo "Setting up uboone UPS area... ${dir}"
+    source $dir/setup
+    break
+  fi
+done
+
+ups list -aK+ larsoftobj
+echo "LARSOFTOBJ products available listed above. Pick desired one (usually latest), and do 'setup larsoftovj <version> -q<qualifiers>' "
+
+echo ""
+echo ""
+
+ups list -aK+ gallery
+echo "GALLERY products available listed above. Pick desired one (usually latest), and do 'setup gallery <version> -q<qualifiers>' "
+
+echo ""
