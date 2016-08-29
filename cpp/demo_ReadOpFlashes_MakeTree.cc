@@ -146,8 +146,6 @@ int main() {
 
       //initialize/clear out our tree objects
       flash_vals.Clear();
-      //ophit_ar.Clear();
-      //ophit_vals.resize(ophits_vec.size(),new OpHitTreeObj());
 
       //fill some flash info
       auto const& myflash = opflash_vec[i_f];
@@ -169,14 +167,8 @@ int main() {
       }
 
       //fill the tree. set branch address on ophits to be safe.
-      //ophitbranch->SetBranchAddress(&ophit_vals);
       flashanatree->Fill();
-      /*
-      //we should delete our pointers, since we new'ed them.
-      for(auto & ptr : ophit_vals)
-	delete ptr;
-      ophit_vals.clear();
-      */
+
     } //end loop over flashes
     
     
