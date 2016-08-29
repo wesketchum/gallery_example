@@ -89,8 +89,10 @@ void demo_ReadOpFlashes() {
   //
   //In a for loop, that looks like this:
 
+  TStopwatch timer;
   for (gallery::Event ev(filenames) ; !ev.atEnd(); ev.next()) {
-
+    timer.Start();
+    
     //to get run and event info, you use this "eventAuxillary()" object.
     cout << "Processing "
 	 << "Run " << ev.eventAuxiliary().run() << ", "
@@ -159,6 +161,8 @@ void demo_ReadOpFlashes() {
       h_ophits_per_flash_2pe->Fill(nhits);
     }
     
+    timer.Stop();
+    cout << "\tEvent took " << timer.RealTime()*1000. << " ms to process." << endl;
   } //end loop over events!
 
 

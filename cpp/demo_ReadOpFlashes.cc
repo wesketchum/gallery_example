@@ -16,6 +16,7 @@
 #include <stdlib.h>
 #include <string>
 #include <vector>
+#include <chrono>
 
 //some ROOT includes
 #include "TInterpreter.h"
@@ -40,6 +41,8 @@
 //convenient for us! let's not bother with art and std namespaces!
 using namespace art;
 using namespace std;
+
+using namespace std::chrono;
 
 int main() {
 
@@ -83,7 +86,8 @@ int main() {
   //In a for loop, that looks like this:
 
   for (gallery::Event ev(filenames) ; !ev.atEnd(); ev.next()) {
-
+    auto t_begin = high_resolution_clock::now();
+    
     //to get run and event info, you use this "eventAuxillary()" object.
     cout << "Processing "
 	 << "Run " << ev.eventAuxiliary().run() << ", "
@@ -152,6 +156,9 @@ int main() {
       h_ophits_per_flash_2pe.Fill(nhits);
     }
     
+    auto t_end = high_resolution_clock::now();
+    duration<double,std::milli> time_total_ms(t_end-t_begin);
+    cout << "\tEvent took " << time_total_ms.count() << " ms to process." << endl;
   } //end loop over events!
 
 
