@@ -27,3 +27,7 @@ LDFLAGS=$$(root-config --libs) \
 demo_ReadEvent: demo_ReadEvent.cc
 	@$(CXX) $(CPPFLAGS) $(CXXFLAGS) $(LDFLAGS) -o $@ $<
 
+demo_ReadOpFlashes: demo_ReadOpFlashes.cc hist_utilities.h
+	@$(CXX) $(CPPFLAGS) $(CXXFLAGS) $(LDFLAGS) -o $@ $<
+
+all: demo_ReadEvent demo_ReadOpFlashes
