@@ -33,4 +33,13 @@ demo_ReadOpFlashes: demo_ReadOpFlashes.cc hist_utilities.h
 demo_ReadOpFlashes_MakeTree: demo_ReadOpFlashes_MakeTree.cc hist_utilities.h
 	@$(CXX) $(CPPFLAGS) $(CXXFLAGS) $(LDFLAGS) -o $@ $<
 
+SimpleOpFlashAna.o: SimpleOpFlashAna.cxx SimpleOpFlashAna.hh
+	@$(CXX) $(CPPFLAGS) $(CXXFLAGS) $(LDFLAGS) -c SimpleOpFlashAna.cxx
+
+demo_SimpleOpFlashAna: demo_SimpleOpFlashAna.cc SimpleOpFlashAna.o
+	@$(CXX) $(CPPFLAGS) $(CXXFLAGS) $(LDFLAGS) SimpleOpFlashAna.o -o $@ $<
+
 all: demo_ReadEvent demo_ReadOpFlashes demo_ReadOpFlashes_MakeTree
+
+clean:
+	rm *.o demo_ReadEvent demo_ReadOpFlashes demo_ReadOpFlashes_MakeTree demo_SimpleOpFlashAna
