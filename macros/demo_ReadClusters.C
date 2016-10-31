@@ -81,7 +81,7 @@ void demo_ReadClusters() {
   //Check the contents of your file by setting up a version of uboonecode, and
   //running an event dump:
   //  'lar -c eventdump.fcl -s MyInputFile_1.root -n 1 | grep "std::vector<recob::Cluster>" '
-  InputTag cluster_tag { "pandoraNu" };
+  InputTag cluster_tag { "pandora" };
 
 
   //ok, now for the event loop! Here's how it works.

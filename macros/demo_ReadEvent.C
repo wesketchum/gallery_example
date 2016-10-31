@@ -42,7 +42,7 @@ void demo_ReadEvent() {
 
   //Let's make a histogram to store event numbers.
   //I ran this before, so I know my event range. You can adjust this for your file!
-  TH1F* h_events = new TH1F("h_events","Event Numbers;event;N_{events} / bin",100,4500,5000); 
+  TH1F* h_events = new TH1F("h_events","Event Numbers;event;N_{events} / bin",100,0,100); 
   
   //We specify our files in a list of file names!
   //Note: multiple files allowed. Just separate by comma.
