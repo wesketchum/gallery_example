@@ -22,6 +22,7 @@
 #include "TROOT.h"
 #include "TH1F.h"
 #include "TFile.h"
+#include "TStyle.h"
 
 //"art" includes (canvas, and gallery)
 #include "canvas/Utilities/InputTag.h"
