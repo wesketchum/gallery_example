@@ -8,7 +8,6 @@ CPPFLAGS=-I $(BOOST_INC) \
          -I $(FHICLCPP_INC) \
          -I $(GALLERY_INC) \
          -I $(LARCOREOBJ_INC) \
-         -I $(LARSIMOBJ_INC) \
          -I $(LARDATAOBJ_INC) \
          -I $(NUSIMDATA_INC) \
          -I $(ROOT_INC)
@@ -21,8 +20,7 @@ LDFLAGS=$$(root-config --libs) \
         -L $(GALLERY_LIB) -l gallery \
         -L $(NUSIMDATA_LIB) -l nusimdata_SimulationBase \
         -L $(LARCOREOBJ_LIB) -l larcoreobj_SummaryData \
-        -L $(LARSIMOBJ_LIB) -l larsimobj_Simulation \
-        -L $(LARDATAOBJ_LIB) -l lardataobj_RecoBase -l lardataobj_MCBase -l lardataobj_RawData -l lardataobj_OpticalDetectorData -l lardataobj_AnalysisBase
+        -L $(LARDATAOBJ_LIB) -l lardataobj_Simulation -l lardataobj_RecoBase -l lardataobj_MCBase -l lardataobj_RawData -l lardataobj_OpticalDetectorData -l lardataobj_AnalysisBase
 
 demo_ReadEvent: demo_ReadEvent.cc
 	@$(CXX) $(CPPFLAGS) $(CXXFLAGS) $(LDFLAGS) -o $@ $<
@@ -33,13 +31,16 @@ demo_ReadOpFlashes: demo_ReadOpFlashes.cc hist_utilities.h
 demo_ReadOpFlashes_MakeTree: demo_ReadOpFlashes_MakeTree.cc hist_utilities.h
 	@$(CXX) $(CPPFLAGS) $(CXXFLAGS) $(LDFLAGS) -o $@ $<
 
+demo_ReadClusters_MakeTree: demo_ReadClusters_MakeTree.cc hist_utilities.h
+	@$(CXX) $(CPPFLAGS) $(CXXFLAGS) $(LDFLAGS) -o $@ $<
+
 SimpleOpFlashAna.o: SimpleOpFlashAna.cxx SimpleOpFlashAna.hh
 	@$(CXX) $(CPPFLAGS) $(CXXFLAGS) $(LDFLAGS) -c SimpleOpFlashAna.cxx
 
 demo_SimpleOpFlashAna: demo_SimpleOpFlashAna.cc SimpleOpFlashAna.o
 	@$(CXX) $(CPPFLAGS) $(CXXFLAGS) $(LDFLAGS) SimpleOpFlashAna.o -o $@ $<
 
-all: demo_ReadEvent demo_ReadOpFlashes demo_ReadOpFlashes_MakeTree
+all: demo_ReadEvent demo_ReadOpFlashes demo_ReadOpFlashes_MakeTree demo_ReadClusters_MakeTree
 
 clean:
 	rm *.o demo_ReadEvent demo_ReadOpFlashes demo_ReadOpFlashes_MakeTree demo_SimpleOpFlashAna
