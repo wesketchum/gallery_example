@@ -54,6 +54,7 @@ void demo_ReadOpHits() {
   //Let's make a histograms to store optical hit information!
   TH1F* h_ophits_per_ev = new TH1F("h_ophits_per_ev","OpHits per event;N_{optical hits};Events / bin",100,0,1000); 
   TH1F* h_ophit_pe = new TH1F("h_ophit_pe","OpHit PEs; PE; Events / 0.1 PE",100,0,10);
+  TH1F* h_ophit_time = new TH1F("h_ophit_time","OpHit Time; t (#mus); Events / 1 #mus",200,-100,100);
   
   //We specify our files in a list of file names!
   //Note: multiple files allowed. Just separate by comma.
@@ -115,8 +116,10 @@ void demo_ReadOpHits() {
     //
     //So, let's fill our histogram for the ophit PEs.
     //We can use a range-based for loop for ease.
-    for( auto const& ophit : ophit_vec)
+    for( auto const& ophit : ophit_vec){
       h_ophit_pe->Fill(ophit.PE());
+      h_ophit_time->Fill(ophit.PeakTime());
+    }
 
 
     

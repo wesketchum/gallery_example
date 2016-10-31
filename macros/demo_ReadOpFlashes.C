@@ -105,7 +105,9 @@ void demo_ReadOpFlashes() {
 
     //We can now treat this like a pointer, or dereference it to have it be like a vector.
     //I (Wes) for some reason prefer the latter, so I always like to do ...
+    
     auto const& opflash_vec(*opflash_handle);
+    //auto opflash_vec(*opflash_handle);
 
     //For good measure, print out the number of optical hits
     cout << "\tThere are " << opflash_vec.size() << " OpFlashes in this event." << endl;
