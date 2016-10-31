@@ -6,7 +6,7 @@ LOCAL_UBOONE_DIR="/Users/wketchum/larsoft_products"
 for dir in $FERMIOSG_CVMFS_DIR $DUNEOSG_CVMFS_DIR $LOCAL_UBOONE_DIR;
 do
   if [[ -f $dir/setup ]]; then
-    echo "Setting up uboone UPS area... ${dir}"
+    echo "Setting up dune UPS area... ${dir}"
     source $dir/setup
     break
   fi
