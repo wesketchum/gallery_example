@@ -35,10 +35,13 @@
 using namespace art;
 using namespace std;
 
-void demo_ReadEvent() {
+void demo_ReadEvent(std::string input_file, std::string output_file="output.root") {
 
   //By default, Wes hates the stats box! But by default, Wes forgets to disable it in his ROOT profile stuff...
   gStyle->SetOptStat(0);
+
+  //Let's make an output file to store the output
+  TFile *f_output = new TFile(output_file,"RECREATE");
 
   //Let's make a histogram to store event numbers.
   //I ran this before, so I know my event range. You can adjust this for your file!
@@ -46,7 +49,7 @@ void demo_ReadEvent() {
   
   //We specify our files in a list of file names!
   //Note: multiple files allowed. Just separate by comma.
-  vector<string> filenames { "MyInputFile_1.root" };
+  vector<string> filenames { input_file };
 
   //ok, now for the event loop! Here's how it works.
   //
@@ -75,4 +78,7 @@ void demo_ReadEvent() {
   h_events->Draw();
 
   //and ... done!
+  f_output->cd();
+  h_events->Write();
+  f_output->Close();
 }

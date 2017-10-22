@@ -1,24 +1,12 @@
 FERMIOSG_CVMFS_DIR="/cvmfs/fermilab.opensciencegrid.org/products/larsoft/"
-DUNEOSG_CVMFS_DIR="/cvmfs/dune.opensciencegrid.org/products/dune/"
 
-LOCAL_UBOONE_DIR="/Users/wketchum/larsoft_products"
-
-for dir in $FERMIOSG_CVMFS_DIR $DUNEOSG_CVMFS_DIR $LOCAL_UBOONE_DIR;
+for dir in $FERMIOSG_CVMFS_DIR
 do
   if [[ -f $dir/setup ]]; then
-    echo "Setting up dune UPS area... ${dir}"
+    echo "Setting up larsoft UPS area... ${dir}"
     source $dir/setup
     break
   fi
 done
 
-ups list -aK+ larsoftobj
-echo "LARSOFTOBJ products available listed above. Pick desired one (usually latest), and do 'setup larsoftobj <version> -q<qualifiers>' "
-
-echo ""
-echo ""
-
-ups list -aK+ gallery
-echo "GALLERY products available listed above. Pick desired one (usually latest), and do 'setup gallery <version> -q<qualifiers>' "
-
-echo ""
+setup larsoftobj v1_29_00 -qe14:prof
