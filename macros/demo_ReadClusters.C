@@ -81,7 +81,7 @@ void demo_ReadClusters() {
   //Check the contents of your file by setting up a version of uboonecode, and
   //running an event dump:
   //  'lar -c eventdump.fcl -s MyInputFile_1.root -n 1 | grep "std::vector<recob::Cluster>" '
-  InputTag cluster_tag { "pandora" };
+  InputTag cluster_tag { "pandoraCosmic" };
 
 
   //ok, now for the event loop! Here's how it works.
@@ -156,6 +156,8 @@ void demo_ReadClusters() {
 
       //now we can fill our n_hits per cluster!
       h_hits_per_cluster->Fill(hits_vec.size());
+
+      cout << "\t\tThere are " << hits_vec.size() << " hits in cluster " << i_c << "." << endl;
 
       //we can loop over this hit collection too!
       int nhits=0;

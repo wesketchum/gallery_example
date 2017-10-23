@@ -41,8 +41,9 @@ void demo_ReadEvent(std::string input_file, std::string output_file="output.root
   gStyle->SetOptStat(0);
 
   //Let's make an output file to store the output
-  TFile *f_output = new TFile(output_file,"RECREATE");
-
+  TFile *f_output = new TFile(output_file.c_str(),"RECREATE");
+  f_output->cd();
+  
   //Let's make a histogram to store event numbers.
   //I ran this before, so I know my event range. You can adjust this for your file!
   TH1F* h_events = new TH1F("h_events","Event Numbers;event;N_{events} / bin",100,0,100); 
@@ -74,11 +75,7 @@ void demo_ReadEvent(std::string input_file, std::string output_file="output.root
   } //end loop over events!
 
 
-  //now, we're in a macro: we can just draw the histogram!
-  h_events->Draw();
-
   //and ... done!
   f_output->cd();
   h_events->Write();
-  f_output->Close();
 }
